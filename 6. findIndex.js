@@ -1,14 +1,7 @@
-// const getIndexValue = (arr, value) => {
-//     if (!Array.isArray(arr)) return -1
-//     for (let i in arr) {
-//         if (arr[i] === value) {
-//             return i
-//         }
-//     }
-//     return -1
-// }
-
-Array.prototype.getIndexValue = function (callback) {
+function getIndexNumber (callback) {
+    if (!Array.isArray(this)) {
+        throw new Error('Please use getIndNumber func to an array')
+    }
     for (let i in this) {
         if (callback(this[i], i, this)) {
             return i
@@ -17,6 +10,8 @@ Array.prototype.getIndexValue = function (callback) {
     return -1
 }
 
-const mainArr = [5, '7', 7, 2, 9, 10, '80', 56]
+Array.prototype.getIndexNumber = getIndexNumber;
 
-console.log(mainArr.getIndexValue((item, k, arr) => item === '80'))
+const x = [12, '24', 44, 'abcd', '90', 21]
+
+console.log(x.getIndexNumber((item) => item === 'hi'))
